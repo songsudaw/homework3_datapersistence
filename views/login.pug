@@ -1,0 +1,29 @@
+doctype html
+
+html
+  head
+   title Homework2
+   meta(charset="utf-8")
+   link(
+     rel="stylesheet"
+     type="text/css"
+     href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css"
+   )
+  body
+    main.container.is-fluid
+      .section
+        form(method="POST" action="/users/session" enctype="application/x-www-form-urlencoded")
+          .field
+            .field
+              .control
+                input.input(type="text", name="username", id="username", placeholder="Username")/
+            .field
+              .control
+                input.input(type="password", name="password", id="password", placeholder="Password")/
+            .field
+              .control
+                button.button.is-link.is-fullwidth Login
+            - if(error)
+            .field
+              .control
+                p= error

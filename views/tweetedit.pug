@@ -1,0 +1,50 @@
+doctype html
+
+html
+  head
+   title Homework2
+   meta(charset="utf-8")
+   link(
+     rel="stylesheet"
+     type="text/css"
+     href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css"
+   )
+  body
+    main.container.is-fluid
+      .section
+        form(action=`/tweets/${username}`, method="POST")
+          - if (listTweets && (typeof(listTweets) !== undefined)){
+            h1 Edit tweets of 
+              = `'${username}'`
+            - for (let i = 0; i < listTweets.length; i += 1){
+              .field
+                .control
+                  input.input(name=`eTweet`, placeholder="tweet", value=listTweets[i]['tweet'])/
+                  input.input(name=`eTweetDate`, placeholder="createdAt", value=listTweets[i]['createdAt'])/
+                  hr/
+            - }
+          - }else{
+              .field
+                .control
+                  p= error
+          - }
+          .field
+            .control
+              input.input(type="hidden", name="_method", value="PUT")/
+          .field
+            .control
+              button.button.is-link.is-fullwidth Edit
+
+        form(action='/tweets/new', method="GET")
+          .field
+            .control
+          .field
+            .control
+              button.button.is-link.is-fullwidth New              
+        form(action=`/tweets/${username}`, method="POST")
+          .field
+            .control
+              input.input(type="hidden", name="_method", value="DELETE")/
+          .field
+            .control
+              button.button.is-link.is-fullwidth Delete

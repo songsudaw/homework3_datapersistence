@@ -1,0 +1,18 @@
+doctype html
+
+html
+  head
+   title Homework2
+   meta(charset="utf-8")
+   link(
+     rel="stylesheet"
+     type="text/css"
+     href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css"
+   )
+  body
+    main.container.is-fluid
+      .section
+        h1 All tweets by 
+          = `'${username}'`
+        - for (let i = 0; i < listTweets.length; i += 1)
+          li= `${listTweets[i]['tweet']} on ${listTweets[i]['createdAt']}`

@@ -1,0 +1,32 @@
+doctype html
+
+html
+  head
+   title Homework2
+   meta(charset="utf-8")
+   link(
+     rel="stylesheet"
+     type="text/css"
+     href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css"
+   )
+  body
+    main.container.is-fluid
+      .section
+        form(method="POST" action="/tweets" enctype="application/x-www-form-urlencoded")
+          .field
+            .field
+              .control
+                input.input(type="text", name="username", id="username", placeholder="Username")/
+            .field
+              .control
+                input.input(type="text", name="tweet", id="tweet", placeholder="Tweet")/
+            .field
+              .control
+                input.input(type="text", name="createdAt", id="createdAt", placeholder="Created At")/
+            .field
+              .control
+                button.button.is-link.is-fullwidth Save New
+            - if(error)
+            .field
+              .control
+                p= error

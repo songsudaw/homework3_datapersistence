@@ -1,0 +1,43 @@
+doctype html
+
+html
+  head
+   title Homework2
+   meta(charset="utf-8")
+   link(
+     rel="stylesheet"
+     type="text/css"
+     href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css"
+   )
+  body
+    main.container.is-fluid
+      .section
+        - if (listTweets && (typeof(listTweets) !== undefined)){
+          form(action="/search", method="POST")
+            .field
+              .control
+                input.input(name="qTweet", placeholder="Tweet")/
+            .field
+              .control
+                input.input(type="hidden", name="username", value=username)/
+            .field
+              .control
+                button.button.is-link.is-fullwidth Search
+          h1 All tweets by 
+            = `'${username}'`
+          - for (let i = 0; i < listTweets.length; i += 1)
+            li= `${listTweets[i].tweet} on ${listTweets[i].createdAt}`
+        - }else{
+          h1 All tweets by 
+            = `'${username}'`
+          .field
+            .control
+              p= error
+
+        form(action='/tweets/new', method="GET")
+          .field
+            .control
+          .field
+            .control
+              button.button.is-link.is-fullwidth New   
+        - }
